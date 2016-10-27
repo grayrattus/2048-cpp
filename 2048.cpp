@@ -44,6 +44,7 @@ int main() {
     printBoard(table);
 
     for(;;){
+        system("clear");
         randomIJ(table);
         printBoard(table);
         cin >> move;
@@ -68,6 +69,23 @@ int main() {
                 };
                 break;
             case 'd':
+                for ( int i = 0 ; i < 5 ; i++ ){
+                    for ( int j = 0 ; j < 5 ; j++ ){
+                        if (table[i][j] != 0 ){
+                            int tempJ = j + 1;
+                            for (; tempJ < 5 ; tempJ++){
+                                int tempJplus = tempJ - 1;
+                                if ( table[i][tempJ] == 0 ){
+                                    table[i][tempJ] = table[i][tempJplus];
+                                    table[i][tempJplus] = 0;
+                                } else if ( table[i][tempJ] != 0 && table[i][tempJ] == table[i][tempJplus] ){
+                                    table[i][tempJ] = table[i][tempJ]*table[i][tempJ];
+                                    table[i][tempJplus] = 0;
+                                }
+                            }
+                        }
+                    };
+                };
                 break;
             case 's':
                 break;
