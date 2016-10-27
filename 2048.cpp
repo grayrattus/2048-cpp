@@ -51,24 +51,18 @@ int main() {
             case 'a':
                 for ( int i = 0 ; i < 5 ; i++ ){
                     for ( int j = 0 ; j < 5 ; j++ ){
-                        int subI = i;
-                        int subJ = j;
-                        if (table[subI][subJ] != 0 && subJ >= 0){
-                            //table[subI][subJ] = 99;
-                            while (true){
-                                subJ-=1;
-                                if (table[i][subJ] == 0 && subJ >= 0) {
-                                    int anotherJ = subJ+1;
-                                    cout << table[i][subJ] << " :: " << table[i][anotherJ] << endl;
-                                    if (table[i][subJ] == table[i][anotherJ]){
-                                        table[i][subJ] = 99;
-                                        table[i][anotherJ] = 0;
-                                        break;
-                                    }
-                                    table[i][subJ] = table[i][anotherJ];
-                                    table[i][anotherJ] = 0;
-                                } else break;
-                            };
+                        if (table[i][j] != 0 ){
+                            int tempJ = j - 1;
+                            for (; tempJ >= 0 ; tempJ--){
+                                int tempJplus = tempJ + 1;
+                                if ( table[i][tempJ] == 0 ){
+                                    table[i][tempJ] = table[i][tempJplus];
+                                    table[i][tempJplus] = 0;
+                                } else if ( table[i][tempJ] != 0 && table[i][tempJ] == table[i][tempJplus] ){
+                                    table[i][tempJ] = table[i][tempJ]*table[i][tempJ];
+                                    table[i][tempJplus] = 0;
+                                }
+                            }
                         }
                     };
                 };
