@@ -88,8 +88,42 @@ int main() {
                 };
                 break;
             case 's':
+                for ( int i = 0 ; i < 5 ; i++ ){
+                    for ( int j = 0 ; j < 5 ; j++ ){
+                        if (table[i][j] != 0 ){
+                            int tempI = i + 1;
+                            for (; tempI < 5 ; tempI++){
+                                int tempIplus = tempI - 1;
+                                if ( table[tempI][j] == 0 ){
+                                    table[tempI][j] = table[tempIplus][j];
+                                    table[tempIplus][j] = 0;
+                                } else if ( table[tempI][j] != 0 && table[tempI][j] == table[tempIplus][j] ){
+                                    table[tempI][j] = table[tempI][j]*table[tempI][j];
+                                    table[tempIplus][j] = 0;
+                                }
+                            }
+                        }
+                    };
+                };
                 break;
             case 'w':
+                for ( int i = 0 ; i < 5 ; i++ ){
+                    for ( int j = 0 ; j < 5 ; j++ ){
+                        if (table[i][j] != 0 ){
+                            int tempI = i - 1;
+                            for (; tempI >= 0 ; tempI--){
+                                int tempIplus = tempI + 1;
+                                if ( table[tempI][j] == 0 ){
+                                    table[tempI][j] = table[tempIplus][j];
+                                    table[tempIplus][j] = 0;
+                                } else if ( table[tempI][j] != 0 && table[tempI][j] == table[tempIplus][j] ){
+                                    table[tempI][j] = table[tempI][j]*table[tempI][j];
+                                    table[tempIplus][j] = 0;
+                                }
+                            }
+                        }
+                    };
+                };
                 break;
 
 
